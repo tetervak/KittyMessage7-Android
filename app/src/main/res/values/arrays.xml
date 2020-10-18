@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="cat_messages">
+        <item>@string/cat_purr</item>
+        <item>@string/cat_mew</item>
+        <item>@string/cat_hiss</item>
+    </string-array>
+</resources>
