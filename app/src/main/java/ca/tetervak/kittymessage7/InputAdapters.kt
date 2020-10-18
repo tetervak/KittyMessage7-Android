@@ -2,7 +2,6 @@ package ca.tetervak.kittymessage7
 
 import android.view.View
 import android.widget.AdapterView
-import android.widget.CheckBox
 import android.widget.Spinner
 import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingAdapter

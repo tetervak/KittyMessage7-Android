@@ -3,9 +3,7 @@ package ca.tetervak.kittymessage7
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import ca.tetervak.kittymessage7.databinding.ActivityInputBinding
-import ca.tetervak.kittymessage7.model.CatMessage
 import ca.tetervak.kittymessage7.model.Envelope
 
 class InputActivity : AppCompatActivity() {
