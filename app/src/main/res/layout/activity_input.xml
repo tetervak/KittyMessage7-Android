@@ -93,9 +93,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/small_margin"
-                        android:checked="true"
-                        android:text="@string/urgent"
-                        app:delivery="@={envelope.urgent}"/>
+                        android:checked="@={envelope.urgent}"
+                        android:text="@string/urgent"/>
                 </TableRow>
 
             </TableLayout>

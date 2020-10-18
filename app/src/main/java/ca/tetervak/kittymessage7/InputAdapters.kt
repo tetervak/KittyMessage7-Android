@@ -43,28 +43,6 @@ object InputAdapters {
     fun getCatMessage(spinner: Spinner): CatMessage{
         return CatMessage.values()[spinner.selectedItemPosition]
     }
-
-    @BindingAdapter("app:delivery")
-    @JvmStatic
-    fun setIsUrgent(checkBox: CheckBox, isUrgent: Boolean){
-
-        // important to break potential infinite loops
-        if(checkBox.isChecked != isUrgent){
-            checkBox.isChecked = isUrgent
-        }
-    }
-
-    @InverseBindingAdapter(attribute = "app:delivery")
-    @JvmStatic
-    fun getIsUrgent(checkBox: CheckBox): Boolean{
-        return checkBox.isChecked
-    }
-
-    @BindingAdapter("app:deliveryAttrChanged")
-    @JvmStatic
-    fun setDeliveryChangeListener(checkBox: CheckBox, attrChange: InverseBindingListener){
-        checkBox.setOnCheckedChangeListener { _, _ -> attrChange.onChange() }
-    }
 }
 
 
