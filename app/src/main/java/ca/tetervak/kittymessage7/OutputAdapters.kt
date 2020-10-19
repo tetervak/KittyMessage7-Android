@@ -24,23 +24,26 @@ object OutputAdapters {
 
     @BindingAdapter("app:message")
     @JvmStatic
-    fun bindCatMessage(textView: TextView, catMessage: CatMessage){
-        val catMessages = textView.resources.getStringArray(R.array.cat_messages)
-        textView.text = catMessages[catMessage.ordinal]
+    fun bindCatMessage(textView: TextView, catMessage: CatMessage?){
+        if(catMessage is CatMessage){
+            val catMessages = textView.resources.getStringArray(R.array.cat_messages)
+            textView.text = catMessages[catMessage.ordinal]
+        }
     }
 
     @BindingAdapter("app:delivery")
     @JvmStatic
-    fun bindDelivery(textView: TextView, isUrgent: Boolean){
-        val context = textView.context
-        textView.text =
-            if(isUrgent){
-                context.getString(R.string.urgent)
-            }else{
-                context.getString(R.string.not_urgent)
-            }
+    fun bindDelivery(textView: TextView, isUrgent: Boolean?){
+        if(isUrgent is Boolean){
+            val context = textView.context
+            textView.text =
+                    if(isUrgent){
+                        context.getString(R.string.urgent)
+                    }else{
+                        context.getString(R.string.not_urgent)
+                    }
+        }
     }
-
 }
 
 
