@@ -3,42 +3,23 @@ package ca.tetervak.kittymessage7
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import ca.tetervak.kittymessage7.model.CatMessage
+import ca.tetervak.kittymessage7.util.DateTimeStamp
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.*
 
 object OutputAdapters {
 
-    private val dateFormatter =
-        DateTimeFormatter.ofPattern("MMM dd, yyyy")
-
-    private fun formatDate(date: Date?): String? {
-        return date?.toInstant()
-            ?.atZone(ZoneId.systemDefault())
-            ?.toLocalDate()
-            ?.format(dateFormatter)
-    }
-
     @BindingAdapter("app:date")
     @JvmStatic
     fun bindDate(textView: TextView, date: Date?){
-        textView.text = formatDate(date)
-    }
-
-    private val timeFormatter =
-        DateTimeFormatter.ofPattern("h:mm:ss a")
-
-    private fun formatTime(date: Date?): String? {
-        return date?.toInstant()
-            ?.atZone(ZoneId.systemDefault())
-            ?.toLocalTime()
-            ?.format(timeFormatter)
+        textView.text = DateTimeStamp.formatDate(date)
     }
 
     @BindingAdapter("app:time")
     @JvmStatic
     fun bindTime(textView: TextView, date: Date?){
-        textView.text = formatTime(date)
+        textView.text = DateTimeStamp.formatTime(date)
     }
 
     @BindingAdapter("app:message")
