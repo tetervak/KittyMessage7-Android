@@ -13,13 +13,15 @@ object OutputAdapters {
     @BindingAdapter("app:date")
     @JvmStatic
     fun bindDate(textView: TextView, date: Date?){
-        textView.text = DateTimeStamp.formatDate(date)
+        if(date is Date)
+            textView.text = DateTimeStamp.formatDate(date)
     }
 
     @BindingAdapter("app:time")
     @JvmStatic
     fun bindTime(textView: TextView, date: Date?){
-        textView.text = DateTimeStamp.formatTime(date)
+        if(date is Date)
+            textView.text = DateTimeStamp.formatTime(date)
     }
 
     @BindingAdapter("app:message")
