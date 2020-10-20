@@ -8,41 +8,36 @@ import androidx.databinding.InverseBindingAdapter
 import androidx.databinding.InverseBindingListener
 import ca.tetervak.kittymessage7.model.CatMessage
 
-object InputAdapters {
+@BindingAdapter("app:message")
+fun setCatMessage(spinner: Spinner, catMessage: CatMessage) {
+    val messageIndex = catMessage.ordinal
 
-    @BindingAdapter("app:message")
-    @JvmStatic
-    fun setCatMessage(spinner: Spinner, catMessage: CatMessage){
-        val messageIndex = catMessage.ordinal
-
-        // important to break potential infinite loops
-        if (spinner.selectedItemPosition != messageIndex){
-            spinner.setSelection(messageIndex)
-        }
-    }
-
-    @BindingAdapter("app:messageAttrChanged")
-    @JvmStatic
-    fun setMessageChangeListener(spinner: Spinner, attrChange: InverseBindingListener){
-
-        spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
-
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                attrChange.onChange()
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
-
-        }
-    }
-
-    @InverseBindingAdapter(attribute = "app:message")
-    @JvmStatic
-    fun getCatMessage(spinner: Spinner): CatMessage{
-        return CatMessage.values()[spinner.selectedItemPosition]
+    // important to break potential infinite loops
+    if (spinner.selectedItemPosition != messageIndex) {
+        spinner.setSelection(messageIndex)
     }
 }
+
+@BindingAdapter("app:messageAttrChanged")
+fun setMessageChangeListener(spinner: Spinner, attrChange: InverseBindingListener) {
+
+    spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            attrChange.onChange()
+        }
+
+        override fun onNothingSelected(parent: AdapterView<*>?) {
+        }
+
+    }
+}
+
+@InverseBindingAdapter(attribute = "app:message")
+fun getCatMessage(spinner: Spinner): CatMessage {
+    return CatMessage.values()[spinner.selectedItemPosition]
+}
+
 
 
 
